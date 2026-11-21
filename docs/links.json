@@ -1,0 +1,77 @@
+{
+  "curated": {
+    "docs": {
+      "README": "README.md",
+      "CLAUDE": "CLAUDE.md",
+      "DOCS": "docs/README.md",
+      "DOCLINKS": "tools/README.md"
+    },
+    "live": [
+      "README.md",
+      "CLAUDE.md",
+      "tools/README.md",
+      "docs/"
+    ],
+    "covers": {
+      "README.md": [
+        "scripts/*.sh",
+        ".claude/settings.json"
+      ],
+      "CLAUDE.md": [
+        "scripts/*.sh",
+        "wrangler.jsonc",
+        "vite.config.ts"
+      ],
+      "tools/README.md": [
+        "tools/doclinks.mjs",
+        ".githooks/*"
+      ]
+    },
+    "retired": {},
+    "notDocs": [],
+    "reviewed": {}
+  },
+  "derived": {
+    "note": "REBUILT by `node tools/doclinks.mjs build` — do not edit by hand.",
+    "codeCitesDocs": {
+      "tools/doclinks.mjs": {
+        "CLAUDE": [],
+        "DOCLINKS": [],
+        "README": []
+      }
+    },
+    "docCitesCode": {
+      ".claude/skills/doclinks/SKILL.md": [
+        "src/App.tsx@App",
+        "tools/doclinks.mjs"
+      ],
+      "CLAUDE.md": [
+        "scripts/deploy.sh",
+        "src/App.tsx",
+        "src/index.css",
+        "src/main.tsx",
+        "tools/doclinks.mjs",
+        "worker/index.ts",
+        "wrangler.jsonc"
+      ],
+      "README.md": [
+        "scripts/deploy.sh",
+        "scripts/on-stop.sh",
+        "tools/README.md",
+        "tools/doclinks.mjs",
+        "worker/index.ts",
+        "wrangler.jsonc"
+      ],
+      "docs/README.md": [
+        "tools/README.md"
+      ],
+      "tools/README.md": [
+        "scripts/on-stop.sh",
+        "tools/doclinks.mjs"
+      ]
+    },
+    "anchors": {
+      "src/App.tsx@App": "47f14c277946"
+    }
+  }
+}

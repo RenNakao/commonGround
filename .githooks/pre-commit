@@ -1,0 +1,6 @@
+#!/bin/sh
+# doclinks — list docs linked to what is being committed but not in the commit, and any broken
+# citations. WARNS ONLY: a commit is never blocked here; `npm run doclinks` is
+# where broken citations fail. Enable once per clone: git config core.hooksPath .githooks
+node "$(git rev-parse --show-toplevel)/tools/doclinks.mjs" precommit || true
+exit 0

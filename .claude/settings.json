@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(npm install *)",
+      "Bash(npm i *)",
+      "Bash(npx wrangler *)",
+      "Bash(git *)",
+      "Bash(bash scripts/deploy.sh)",
+      "Read(./**)",
+      "Edit(./**)",
+      "Write(./**)",
+      "Bash(node tools/doclinks.mjs *)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Bash(cat .env*)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/tools/doclinks.mjs\" hook-post 2>/dev/null || true",
+            "timeout": 30,
+            "statusMessage": "doclinks: checking linked docs"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/scripts/on-stop.sh\"",
+            "timeout": 360,
+            "statusMessage": "doclinks review, then build + deploy"
+          }
+        ]
+      }
+    ]
+  },
+  "enabledPlugins": {
+    "frontend-design@claude-plugins-official": true,
+    "playwright@claude-plugins-official": true,
+    "cloudflare@cloudflare": true
+  }
+}
